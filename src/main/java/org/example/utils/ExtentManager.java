@@ -1,0 +1,27 @@
+package org.example.utils;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class ExtentManager {
+
+    private static ExtentReports extent;
+
+    public static ExtentReports getInstance() {
+
+        if (extent == null) {
+
+            ExtentSparkReporter spark =
+                    new ExtentSparkReporter("AutomationReport.html");
+
+            extent = new ExtentReports();
+            extent.attachReporter(spark);
+
+            extent.setSystemInfo("Project", "SauceDemo Framework");
+            extent.setSystemInfo("Tester", "Mostafa");
+            extent.setSystemInfo("Type", "UI Automation");
+        }
+
+        return extent;
+    }
+}
