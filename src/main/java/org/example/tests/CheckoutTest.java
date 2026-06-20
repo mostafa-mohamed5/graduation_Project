@@ -19,7 +19,7 @@ public class CheckoutTest extends BaseTest {
         cart.checkout();
     }
 
-    // ================= VALID =================
+
 
     @Test
     public void checkoutValid1() throws InterruptedException {
@@ -86,7 +86,7 @@ public class CheckoutTest extends BaseTest {
         test.pass("Checkout success");
     }
 
-    // ================= INVALID =================
+
 
     @Test
     public void checkoutInvalid1() throws InterruptedException {

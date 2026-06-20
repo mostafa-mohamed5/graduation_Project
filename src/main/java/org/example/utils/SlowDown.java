@@ -6,7 +6,7 @@ public class SlowDown {
 
         try {
             if (Config.DEBUG_MODE) {
-                Thread.sleep(2000); // 2 sec delay for debug mode
+                Thread.sleep(2000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

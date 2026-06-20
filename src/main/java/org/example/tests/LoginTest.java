@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest {
         test.pass("Login executed");
     }
 
-    // ================= INVALID =================
+
 
     @Test
     public void invalid1() throws InterruptedException {

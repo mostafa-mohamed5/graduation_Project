@@ -15,14 +15,13 @@ import org.testng.annotations.*;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-
 public class BaseTest {
 
     protected WebDriver driver;
     protected static ExtentReports extent;
     protected ExtentTest test;
 
-    // ================= SETUP =================
+
     @BeforeMethod
     public void setUp() {
 
@@ -33,7 +32,7 @@ public class BaseTest {
 
         ChromeOptions options = new ChromeOptions();
 
-        // Disable password manager
+
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
@@ -53,7 +52,7 @@ public class BaseTest {
         SlowDown.waitForStep();
     }
 
-    // ================= CHECKPOINT METHOD =================
+
     public void checkpoint(String name, boolean condition) {
 
         String path = ScreenshotUtil.takeScreenshot(driver, name);
@@ -67,13 +66,13 @@ public class BaseTest {
         }
     }
 
-    // ================= TEARDOWN =================
+
     @AfterMethod
     public void tearDown(ITestResult result) {
 
         try {
 
-            // ❌ FAILURE
+
             if (result.getStatus() == ITestResult.FAILURE) {
 
                 String path = ScreenshotUtil.takeScreenshot(driver, result.getName());
@@ -82,12 +81,12 @@ public class BaseTest {
                         .addScreenCaptureFromPath(path);
             }
 
-            // ✅ SUCCESS
+
             else if (result.getStatus() == ITestResult.SUCCESS) {
                 test.pass("Test Passed Successfully");
             }
 
-            // ⏳ SKIP (optional handling)
+
             else if (result.getStatus() == ITestResult.SKIP) {
                 test.skip("Test Skipped");
             }
@@ -103,7 +102,7 @@ public class BaseTest {
         }
     }
 
-    // ================= FLUSH REPORT =================
+
     @AfterSuite
     public void flushReport() {
 
